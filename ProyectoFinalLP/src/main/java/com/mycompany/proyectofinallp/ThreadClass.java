@@ -11,10 +11,18 @@ package com.mycompany.proyectofinallp;
  */
 public class ThreadClass extends Thread{
     
-    
+    int id,
+        forN;
+    public ThreadClass (int id, int forN){
+        this.id = id;
+        this.forN = forN;
+    }
     
     @Override
     public void run(){
-        System.out.println("HILO");
+        System.out.println("HILO" + id);
+        for(int i=0; i<this.forN ; i++){
+            System.out.println("SCHEME: ");
+        }
     }
 }

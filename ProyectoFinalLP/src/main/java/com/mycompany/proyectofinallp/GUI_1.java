@@ -77,14 +77,13 @@ public class GUI_1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         String n = this.jTextField1.getText();
         try{
-            int s = Integer.parseInt(n);
+            int number = Integer.parseInt(n);
+            ThreadClass hilo = new ThreadClass(1, number);
+            hilo.start();
         }catch(NumberFormatException ex){
             System.err.println("Format not recognized " + ex);
         }
-        
         System.out.println("INICIO");
-        ThreadClass hilo = new ThreadClass();
-        hilo.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
