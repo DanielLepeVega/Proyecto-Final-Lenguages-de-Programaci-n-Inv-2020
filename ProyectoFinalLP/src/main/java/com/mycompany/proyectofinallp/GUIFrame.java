@@ -311,10 +311,10 @@ public class GUIFrame extends javax.swing.JFrame {
         this.setFlagToStartThreads(true);
         //Validar n menor que m
         System.out.println("--------------------------antes if 1");
-        if((Integer)this.jSpinnerConsumers1.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
+        if((Integer)this.jSpinnerUpperR.getValue() > (Integer)this.jSpinnerConsumers1.getValue()){
             this.jLabel9.setVisible(true);
             System.out.println("Validar n menor que m");
-            this.setFlagToStartThreads(false);
+            this.setFlagToStartThreads(true);
         }
         System.out.println("--------------------------antes if 2");        
         if((Integer)this.jSpinnerProducers.getValue()>10 || (Integer)this.jSpinnerProducers.getValue()<1){
@@ -347,38 +347,45 @@ public class GUIFrame extends javax.swing.JFrame {
             this.setFlagToStartThreads(false);
         }
         
+        if((Integer)this.jSpinnerUpperR.getValue() > (Integer)this.jSpinnerConsumers1.getValue()){
+            this.jLabel9.setVisible(true);
+            System.out.println("Validado n Si es menor que m");
+            this.setFlagToStartThreads(true);
+        }
         
         System.out.println("-------------------------6");
         
         //si el threadManager es null crear el threadManager
         System.out.println("--------------------------antes if 6");
+        System.out.println(this.getFlagToStartThreads());
+        this.colorChanger();
+        System.out.println("*****");
         if(this.threadManager==null){
             System.out.println("--------------------------7");
-            //this.threadManagerCreator();
+            this.threadManagerCreator();
             System.out.println("--------------------------8");
             System.out.println("Objeto creado 1");
-            if(this.threadManagerCreator()){
-                System.out.println("Objeto creado 2");
-            }
             System.out.println("-------------------------todo creado");
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    public boolean colorChanger(){
+    public void colorChanger(){
         //Cambiar botón y detener threads
-        if (!this.threadManager.inProgress && this.getFlagToStartThreads()) {
+        System.out.println("colorChanger");
+        if (this.getFlagToStartThreads()) {
             System.out.println("-------------------------7");
             changeJButtonInicio();
-            return true;
+            //return true;
         } else {
             this.threadManager.stopProducerConsumer();
             System.out.println("-------------------------else");
             changeJButtonInicio();
-            return true;
+            //return true;
         }
     }
     
-    private boolean threadManagerCreator(){
+    private void threadManagerCreator(){
+        System.out.println("*");
         this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), 
                                                         (Integer)this.jSpinnerProducers.getValue(), 
                                                         (Integer)this.jSpinnerConsumers.getValue(), 
@@ -386,8 +393,9 @@ public class GUIFrame extends javax.swing.JFrame {
                                                         (Integer)this.jSpinnerUpperR2.getValue(),
                                                         (Integer)this.jSpinnerConsumers1.getValue(),
                                                         (Integer)this.jSpinnerUpperR.getValue());
+        System.out.println("**");
         this.threadManager.startProducerConsumer();
-        return true;
+        System.out.println("***");
     }
     
     private void changeJButtonInicio() {

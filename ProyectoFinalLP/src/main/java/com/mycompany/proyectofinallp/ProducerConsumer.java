@@ -1,10 +1,11 @@
 package com.mycompany.proyectofinallp;
 import java.util.*;
+import java.lang.Integer;
 
 public class ProducerConsumer extends Thread{
     
     public static boolean inProgress;
-    private final int bufferSize, 
+    private final Integer bufferSize, 
             numProducers, 
             numConsumers,
             waitTimeProducer,
@@ -16,8 +17,8 @@ public class ProducerConsumer extends Thread{
     private ArrayList<Consumer> listConsumers;
     private ArrayList<Producer> listProducers;
     
-    public ProducerConsumer(int bufferSize, int numProducers, int numConsumers,
-            int waitTimeProducer, int waitTimeConsumer, int lowerRange, int upperRange) {
+    public ProducerConsumer(Integer bufferSize, Integer numProducers, Integer numConsumers,
+            Integer waitTimeProducer, Integer waitTimeConsumer, Integer lowerRange, int upperRange) {
         this.bufferSize = bufferSize;
         this.numProducers = numProducers;
         this.numConsumers = numConsumers;
