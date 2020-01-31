@@ -14,7 +14,7 @@ import java.awt.Color;
  */
 public class GUIFrame extends javax.swing.JFrame {
 
-    
+    private boolean flagToStartThreads; 
     private ProducerConsumer threadManager;
     
     /**
@@ -24,6 +24,7 @@ public class GUIFrame extends javax.swing.JFrame {
         initComponents();
 //        this.setSize(431, 343);
         this.jLabel9.setVisible(false);
+        this.flagToStartThreads = false;
     }
 
     /**
@@ -298,23 +299,60 @@ public class GUIFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setFlagToStartThreads(boolean flag){
+        this.flagToStartThreads = flag;
+    }
+    
+    public boolean getFlagToStartThreads(){
+        return this.flagToStartThreads;
+    }
+    
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
+        this.setFlagToStartThreads(true);
+        //Validar n menor que m
+        if((Integer)this.jSpinnerConsumers1.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
+            this.jLabel9.setVisible(true);
+            System.out.println("Validar n menor que m");
+            this.setFlagToStartThreads(false);
+        }
+        
+        if((Integer)this.jSpinnerProducers.getValue()>10 || (Integer)this.jSpinnerProducers.getValue()<1){
+            System.out.println("jSpinnerProducers mayor a 10 o menor a 1");
+            this.setFlagToStartThreads(false);
+        }
+        
+        if((Integer)this.jSpinnerConsumers.getValue()>10 || (Integer)this.jSpinnerConsumers.getValue()<1){
+            System.out.println("jSpinnerConsumers mayor a 10 o menor a 1");
+            this.setFlagToStartThreads(false);
+        }
+        
+        if((Integer)this.jSpinnerConsumers2.getValue()>100 || (Integer)this.jSpinnerConsumers2.getValue()<1){
+            System.out.println("jSpinnerConsumers2 mayor a 100 o menor a 1");
+            this.setFlagToStartThreads(false);
+        }    
+        
+        if((Integer)this.jSpinnerUpperR1.getValue()>10000 || (Integer)this.jSpinnerUpperR1.getValue()<0){
+            System.out.println("jSpinnerUpperR1 mayor a 10000 o menor a 0");
+            this.setFlagToStartThreads(false);
+        }
+        
+        if((Integer)this.jSpinnerUpperR2.getValue()>10000 || (Integer)this.jSpinnerUpperR2.getValue()<0){
+            System.out.println("jSpinnerUpperR2 mayor a 10000 o menor a 0");
+            this.setFlagToStartThreads(false);
+        }
+        
+        
+        
         //Cambiar botón y detener threads
-        if (!ProducerConsumer.inProgress) {
+        if (!ProducerConsumer.inProgress && this.getFlagToStartThreads()) {
             this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), (Integer)1, (Integer)1);
             this.threadManager.startProducerConsumer();
             changeJButtonInicio();
 
         } else {
             this.threadManager.stopProducerConsumer();
-
             changeJButtonInicio();
-        }
-
-        //Validar n menor que m
-        if((Integer)this.jSpinnerConsumers1.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
-            this.jLabel9.setVisible(true);
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
