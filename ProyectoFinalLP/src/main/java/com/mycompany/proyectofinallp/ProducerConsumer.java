@@ -2,7 +2,7 @@ package com.mycompany.proyectofinallp;
 
 public class ProducerConsumer extends Thread{
     
-    public boolean inProgress;
+    public static boolean inProgress;
     private int bufferSize, numProducers, numConsumers;
     
     public ProducerConsumer(int bufferSize, int numProducers, int numConsumers) {
@@ -12,7 +12,10 @@ public class ProducerConsumer extends Thread{
         this.numConsumers = numConsumers;
     }
     
-    public void startProductConsumer() {
+    public void startProducerConsumer() {
+        
+        // In progress
+        inProgress = true;
         
         // Start buffer
         Buffer buffer = new Buffer(this.bufferSize);
@@ -28,6 +31,15 @@ public class ProducerConsumer extends Thread{
             Consumer consumer = new Consumer(i, buffer);
             consumer.start();
         }
+        
+    }
+    
+    public void stopProducerConsumer() {
+        
+        // Stop in progress
+        this.inProgress = false;
+        
+        // Stop consumer and producer
         
     }
     

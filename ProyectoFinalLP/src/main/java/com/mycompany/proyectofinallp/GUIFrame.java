@@ -250,11 +250,29 @@ public class GUIFrame extends javax.swing.JFrame {
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
-        this.jButtonInicio.setText("DETENER");
-        this.jButtonInicio.setForeground(Color.red);
+        
+        if (!ProducerConsumer.inProgress) {
+            new ProducerConsumer(10, 1, 1).startProducerConsumer();
+            changeJButtonInicio();
+            
+        } else {
+            ProducerConsumer.stopProducerConsumer();
+            changeJButtonInicio();          
+        }
         
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
+    private void changeJButtonInicio() {
+        if (this.jButtonInicio.getText().equals("INICIAR")) {
+            this.jButtonInicio.setText("DETENER");
+            this.jButtonInicio.setForeground(Color.red);
+        } else {
+            this.jButtonInicio.setText("INICIAR");
+            this.jButtonInicio.setForeground(new Color(0, 102, 51));
+        }
+        
+        
+    }
     private void validateFields() {
         
     }
