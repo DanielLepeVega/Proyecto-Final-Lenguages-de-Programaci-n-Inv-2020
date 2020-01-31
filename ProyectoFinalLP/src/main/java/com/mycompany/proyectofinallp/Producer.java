@@ -10,12 +10,14 @@ public class Producer extends Thread {
     private boolean exit;
     public int id;
     Buffer buffer;
-    private int waitTime;
+    private int waitTime, lowerRange, upperRange;
     
     Producer(int id, Buffer buffer, int waitTime, int lowerRange, 
             int upperRange) {
         this.id = id;
         this.buffer = buffer;
+        this.lowerRange = lowerRange;
+        this.upperRange = upperRange;
     }
     
     @Override
@@ -23,11 +25,17 @@ public class Producer extends Thread {
         System.out.println("Running Producer...");
         String products = "AEIOU";
         Random r = new Random(System.currentTimeMillis());
-        char product;
+        
+        int id = 1;
+        
+        
+        
+        String product;
         
         
         while(true) {
-            product = products.charAt(r.nextInt(5));
+            product = new SchemeExpressionGen(id++, r.nextInt() % 4, 
+                    this.lowerRange, this.upperRange).toString();
             this.buffer.produce(product);
             //System.out.println("Producer produced: " + product);
             Buffer.print("Producer produced: " + product);

@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private LinkedList<Character> slots;
+    private LinkedList<String> slots;
     public int n;
     
     Buffer(int n) {
@@ -18,8 +18,8 @@ public class Buffer {
     }
     
     
-    synchronized char consume() {
-        char product = 0;
+    synchronized String consume() {
+        String product = "";
         
         if(this.slots.isEmpty()) {
             try {
@@ -35,7 +35,7 @@ public class Buffer {
         return product;
     }
     
-    synchronized void produce(char product) {
+    synchronized void produce(String product) {
         if(this.slots.size() == this.n) {
             try {
                 wait();
