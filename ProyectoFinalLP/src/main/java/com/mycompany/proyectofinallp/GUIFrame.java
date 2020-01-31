@@ -14,6 +14,9 @@ import java.awt.Color;
  */
 public class GUIFrame extends javax.swing.JFrame {
 
+    
+    private ProducerConsumer threadManager;
+    
     /**
      * Creates new form GUIFrame
      */
@@ -252,10 +255,12 @@ public class GUIFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (!ProducerConsumer.inProgress) {
-            new ProducerConsumer(10, 1, 1).startProducerConsumer();
+            this.threadManager = new ProducerConsumer(10, 1, 1);
+            this.threadManager.startProducerConsumer();
             changeJButtonInicio();
             
         } else {
+            this.threadManager.stopProducerConsumer();
             
             changeJButtonInicio();          
         }
