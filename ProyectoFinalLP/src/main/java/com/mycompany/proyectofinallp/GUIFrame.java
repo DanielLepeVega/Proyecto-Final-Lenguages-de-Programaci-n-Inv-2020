@@ -16,7 +16,6 @@ public class GUIFrame extends javax.swing.JFrame {
 
     private boolean flagToStartThreads; 
     private ProducerConsumer threadManager;
-    
     /**
      * Creates new form GUIFrame
      */
@@ -83,7 +82,7 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Rango de Valores (n, m)");
 
-        jSpinnerUpperR.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
+        jSpinnerUpperR.setModel(new javax.swing.SpinnerNumberModel(2, 2, 9, 1));
 
         jLabel1.setText("Productores");
 
@@ -97,15 +96,15 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Cantidad");
 
-        jSpinnerConsumers1.setModel(new javax.swing.SpinnerNumberModel(1, 0, 9, 1));
+        jSpinnerConsumers1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
 
         jLabel9.setText("El valor de \"n\" tiene que ser menor que el de \"m\"");
 
         jSpinnerConsumers2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
-        jSpinnerUpperR1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+        jSpinnerUpperR1.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
 
-        jSpinnerUpperR2.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10000, 1));
+        jSpinnerUpperR2.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
 
         jButtonInicio.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(0, 102, 51));
@@ -311,51 +310,86 @@ public class GUIFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setFlagToStartThreads(true);
         //Validar n menor que m
+        System.out.println("--------------------------antes if 1");
         if((Integer)this.jSpinnerConsumers1.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
             this.jLabel9.setVisible(true);
             System.out.println("Validar n menor que m");
             this.setFlagToStartThreads(false);
         }
-        
+        System.out.println("--------------------------antes if 2");        
         if((Integer)this.jSpinnerProducers.getValue()>10 || (Integer)this.jSpinnerProducers.getValue()<1){
+            System.out.println("--------------------------1");
             System.out.println("jSpinnerProducers mayor a 10 o menor a 1");
             this.setFlagToStartThreads(false);
         }
-        
+        System.out.println("--------------------------antes if 3");        
         if((Integer)this.jSpinnerConsumers.getValue()>10 || (Integer)this.jSpinnerConsumers.getValue()<1){
+            System.out.println("-------------------------2");
             System.out.println("jSpinnerConsumers mayor a 10 o menor a 1");
             this.setFlagToStartThreads(false);
         }
-        
+        System.out.println("--------------------------antes if 4");        
         if((Integer)this.jSpinnerConsumers2.getValue()>100 || (Integer)this.jSpinnerConsumers2.getValue()<1){
+            System.out.println("-------------------------3");
             System.out.println("jSpinnerConsumers2 mayor a 100 o menor a 1");
             this.setFlagToStartThreads(false);
         }    
-        
+        System.out.println("--------------------------antes if 5");        
         if((Integer)this.jSpinnerUpperR1.getValue()>10000 || (Integer)this.jSpinnerUpperR1.getValue()<0){
+            System.out.println("-------------------------4");
             System.out.println("jSpinnerUpperR1 mayor a 10000 o menor a 0");
             this.setFlagToStartThreads(false);
         }
-        
+        System.out.println("--------------------------antes if 6");        
         if((Integer)this.jSpinnerUpperR2.getValue()>10000 || (Integer)this.jSpinnerUpperR2.getValue()<0){
+            System.out.println("-------------------------5");
             System.out.println("jSpinnerUpperR2 mayor a 10000 o menor a 0");
             this.setFlagToStartThreads(false);
         }
         
         
+        System.out.println("-------------------------6");
         
-        //Cambiar botón y detener threads
-        if (!ProducerConsumer.inProgress && this.getFlagToStartThreads()) {
-            this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), (Integer)1, (Integer)1);
-            this.threadManager.startProducerConsumer();
-            changeJButtonInicio();
-
-        } else {
-            this.threadManager.stopProducerConsumer();
-            changeJButtonInicio();
+        //si el threadManager es null crear el threadManager
+        System.out.println("--------------------------antes if 6");
+        if(this.threadManager==null){
+            System.out.println("--------------------------7");
+            //this.threadManagerCreator();
+            System.out.println("--------------------------8");
+            System.out.println("Objeto creado 1");
+            if(this.threadManagerCreator()){
+                System.out.println("Objeto creado 2");
+            }
+            System.out.println("-------------------------todo creado");
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
+    public boolean colorChanger(){
+        //Cambiar botón y detener threads
+        if (!this.threadManager.inProgress && this.getFlagToStartThreads()) {
+            System.out.println("-------------------------7");
+            changeJButtonInicio();
+            return true;
+        } else {
+            this.threadManager.stopProducerConsumer();
+            System.out.println("-------------------------else");
+            changeJButtonInicio();
+            return true;
+        }
+    }
+    
+    private boolean threadManagerCreator(){
+        this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), 
+                                                        (Integer)this.jSpinnerProducers.getValue(), 
+                                                        (Integer)this.jSpinnerConsumers.getValue(), 
+                                                        (Integer)this.jSpinnerUpperR1.getValue(),
+                                                        (Integer)this.jSpinnerUpperR2.getValue(),
+                                                        (Integer)this.jSpinnerConsumers1.getValue(),
+                                                        (Integer)this.jSpinnerUpperR.getValue());
+        this.threadManager.startProducerConsumer();
+        return true;
+    }
+    
     private void changeJButtonInicio() {
         if (this.jButtonInicio.getText().equals("INICIAR")) {
             this.jButtonInicio.setText("DETENER");
