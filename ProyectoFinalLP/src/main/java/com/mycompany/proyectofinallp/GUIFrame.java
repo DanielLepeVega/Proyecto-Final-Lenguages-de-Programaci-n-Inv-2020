@@ -256,7 +256,7 @@ public class GUIFrame extends javax.swing.JFrame {
             changeJButtonInicio();
             
         } else {
-            ProducerConsumer.stopProducerConsumer();
+            
             changeJButtonInicio();          
         }
         
