@@ -5,9 +5,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Consumer extends Thread {
+    
+    public int id;
     Buffer buffer;
     
-    Consumer(Buffer buffer) {
+    Consumer(int id, Buffer buffer) {
+        this.id = id;
         this.buffer = buffer;
     }
     

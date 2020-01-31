@@ -2,6 +2,35 @@ package com.mycompany.proyectofinallp;
 
 public class ProducerConsumer extends Thread{
     
+    public boolean inProgress;
+    private int bufferSize, numProducers, numConsumers;
+    
+    public ProducerConsumer(int bufferSize, int numProducers, int numConsumers) {
+        
+        this.bufferSize = bufferSize;
+        this.numProducers = numProducers;
+        this.numConsumers = numConsumers;
+    }
+    
+    public void startProductConsumer() {
+        
+        // Start buffer
+        Buffer buffer = new Buffer(this.bufferSize);
+        
+        // Start producers
+        for (int i = 0; i < this.numProducers; i++) {
+            Producer producer = new Producer(i, buffer);
+            producer.start();
+        }
+        
+        // Start consumers
+        for (int i = 0; i < this.numConsumers; i++) {
+            Consumer consumer = new Consumer(i, buffer);
+            consumer.start();
+        }
+        
+    }
+    
 //    public static void main(String[] args) {
 //        
 //        Buffer buffer = new Buffer(10);

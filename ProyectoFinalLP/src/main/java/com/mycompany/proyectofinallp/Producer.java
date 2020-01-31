@@ -6,9 +6,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Producer extends Thread {
+    
+    public int id;
     Buffer buffer;
     
-    Producer(Buffer buffer) {
+    Producer(int id, Buffer buffer) {
+        this.id = id;
         this.buffer = buffer;
     }
     
