@@ -302,7 +302,7 @@ public class GUIFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Cambiar botón y detener threads
         if (!ProducerConsumer.inProgress) {
-            this.threadManager = new ProducerConsumer(10, 1, 1);
+            this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), (Integer)1, (Integer)1);
             this.threadManager.startProducerConsumer();
             changeJButtonInicio();
 
