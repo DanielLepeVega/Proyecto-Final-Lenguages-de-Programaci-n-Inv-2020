@@ -17,27 +17,28 @@ public class SchemeExpressionGen {
     private char operador;
     private int a, b;
     
-    public SchemeExpressionGen(int id, char operador, int lowerRange, int upperRange) {
+    public SchemeExpressionGen(int id, int operador, int lowerRange, int upperRange) {
         this.id = id;
         this.setOperador(operador);
         this.setSchemeNumbers(lowerRange, upperRange);
         
     }
     
-    private void setOperador(char operador) {
+    private void setOperador(int operador) {
         switch (operador) {
-            case 1:
+            case 0:
                 this.operador = '+';
                 break;
-            case 2:
+            case 1:
                 this.operador = '-';
                 break;
-            case 3:
+            case 2:
                 this.operador = '*';
                 break;
-            case 4:
+            case 3:
                 this.operador = '/';
                 break;
+            
         }
     }
     

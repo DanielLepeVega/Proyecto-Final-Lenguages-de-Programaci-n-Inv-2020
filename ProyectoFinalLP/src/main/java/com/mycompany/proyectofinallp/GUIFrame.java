@@ -48,11 +48,11 @@ public class GUIFrame extends javax.swing.JFrame {
         jSpinnerConsumers = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jSpinnerConsumers1 = new javax.swing.JSpinner();
+        jSpinnerLowerR = new javax.swing.JSpinner();
         jLabel9 = new javax.swing.JLabel();
-        jSpinnerConsumers2 = new javax.swing.JSpinner();
-        jSpinnerUpperR1 = new javax.swing.JSpinner();
-        jSpinnerUpperR2 = new javax.swing.JSpinner();
+        jSpinnerBufferSize = new javax.swing.JSpinner();
+        jSpinnerWaitTimeProd = new javax.swing.JSpinner();
+        jSpinnerWaitTimeCons = new javax.swing.JSpinner();
         jButtonInicio = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -96,15 +96,15 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Cantidad");
 
-        jSpinnerConsumers1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+        jSpinnerLowerR.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
 
         jLabel9.setText("El valor de \"n\" tiene que ser menor que el de \"m\"");
 
-        jSpinnerConsumers2.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        jSpinnerBufferSize.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
-        jSpinnerUpperR1.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
+        jSpinnerWaitTimeProd.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
 
-        jSpinnerUpperR2.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
+        jSpinnerWaitTimeCons.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
 
         jButtonInicio.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(0, 102, 51));
@@ -133,14 +133,14 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(jSpinnerConsumers)
                             .addComponent(jSpinnerProducers)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSpinnerConsumers1)
-                            .addComponent(jSpinnerConsumers2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
+                            .addComponent(jSpinnerLowerR)
+                            .addComponent(jSpinnerBufferSize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
                         .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jSpinnerUpperR, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerUpperR1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerUpperR2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jSpinnerWaitTimeProd, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSpinnerWaitTimeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jLabel9))
@@ -163,20 +163,20 @@ public class GUIFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jSpinnerProducers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerUpperR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerWaitTimeProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jSpinnerConsumers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinnerUpperR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerWaitTimeCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jSpinnerConsumers2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSpinnerBufferSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jSpinnerConsumers1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSpinnerLowerR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
@@ -311,7 +311,11 @@ public class GUIFrame extends javax.swing.JFrame {
         this.setFlagToStartThreads(true);
         //Validar n menor que m
         System.out.println("--------------------------antes if 1");
+<<<<<<< HEAD
         if((Integer)this.jSpinnerUpperR.getValue() > (Integer)this.jSpinnerConsumers1.getValue()){
+=======
+        if((Integer)this.jSpinnerLowerR.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
+>>>>>>> aaf3874abb678ff5eaf4a31a40534e432e87fdc3
             this.jLabel9.setVisible(true);
             System.out.println("Validar n menor que m");
             this.setFlagToStartThreads(true);
@@ -329,19 +333,19 @@ public class GUIFrame extends javax.swing.JFrame {
             this.setFlagToStartThreads(false);
         }
         System.out.println("--------------------------antes if 4");        
-        if((Integer)this.jSpinnerConsumers2.getValue()>100 || (Integer)this.jSpinnerConsumers2.getValue()<1){
+        if((Integer)this.jSpinnerBufferSize.getValue()>100 || (Integer)this.jSpinnerBufferSize.getValue()<1){
             System.out.println("-------------------------3");
             System.out.println("jSpinnerConsumers2 mayor a 100 o menor a 1");
             this.setFlagToStartThreads(false);
         }    
         System.out.println("--------------------------antes if 5");        
-        if((Integer)this.jSpinnerUpperR1.getValue()>10000 || (Integer)this.jSpinnerUpperR1.getValue()<0){
+        if((Integer)this.jSpinnerWaitTimeProd.getValue()>10000 || (Integer)this.jSpinnerWaitTimeProd.getValue()<0){
             System.out.println("-------------------------4");
             System.out.println("jSpinnerUpperR1 mayor a 10000 o menor a 0");
             this.setFlagToStartThreads(false);
         }
         System.out.println("--------------------------antes if 6");        
-        if((Integer)this.jSpinnerUpperR2.getValue()>10000 || (Integer)this.jSpinnerUpperR2.getValue()<0){
+        if((Integer)this.jSpinnerWaitTimeCons.getValue()>10000 || (Integer)this.jSpinnerWaitTimeCons.getValue()<0){
             System.out.println("-------------------------5");
             System.out.println("jSpinnerUpperR2 mayor a 10000 o menor a 0");
             this.setFlagToStartThreads(false);
@@ -384,14 +388,19 @@ public class GUIFrame extends javax.swing.JFrame {
         }
     }
     
+<<<<<<< HEAD
     private void threadManagerCreator(){
         System.out.println("*");
         this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), 
+=======
+    private boolean threadManagerCreator(){
+        this.threadManager = new ProducerConsumer((Integer)this.jSpinnerBufferSize.getValue(), 
+>>>>>>> aaf3874abb678ff5eaf4a31a40534e432e87fdc3
                                                         (Integer)this.jSpinnerProducers.getValue(), 
                                                         (Integer)this.jSpinnerConsumers.getValue(), 
-                                                        (Integer)this.jSpinnerUpperR1.getValue(),
-                                                        (Integer)this.jSpinnerUpperR2.getValue(),
-                                                        (Integer)this.jSpinnerConsumers1.getValue(),
+                                                        (Integer)this.jSpinnerWaitTimeProd.getValue(),
+                                                        (Integer)this.jSpinnerWaitTimeCons.getValue(),
+                                                        (Integer)this.jSpinnerLowerR.getValue(),
                                                         (Integer)this.jSpinnerUpperR.getValue());
         System.out.println("**");
         this.threadManager.startProducerConsumer();
@@ -465,13 +474,13 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBarToDo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinnerBufferSize;
     private javax.swing.JSpinner jSpinnerConsumers;
-    private javax.swing.JSpinner jSpinnerConsumers1;
-    private javax.swing.JSpinner jSpinnerConsumers2;
+    private javax.swing.JSpinner jSpinnerLowerR;
     private javax.swing.JSpinner jSpinnerProducers;
     private javax.swing.JSpinner jSpinnerUpperR;
-    private javax.swing.JSpinner jSpinnerUpperR1;
-    private javax.swing.JSpinner jSpinnerUpperR2;
+    private javax.swing.JSpinner jSpinnerWaitTimeCons;
+    private javax.swing.JSpinner jSpinnerWaitTimeProd;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
