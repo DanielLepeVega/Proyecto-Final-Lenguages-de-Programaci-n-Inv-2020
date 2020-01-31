@@ -113,15 +113,15 @@
                                       <Component id="jSpinnerConsumers" max="32767" attributes="0"/>
                                       <Component id="jSpinnerProducers" max="32767" attributes="0"/>
                                       <Component id="jLabel4" max="32767" attributes="0"/>
-                                      <Component id="jSpinnerConsumers1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jSpinnerConsumers2" alignment="1" pref="86" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerLowerR" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jSpinnerBufferSize" alignment="1" pref="86" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSpinnerUpperR" min="-2" pref="109" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerUpperR1" min="-2" pref="109" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerUpperR2" min="-2" pref="109" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerWaitTimeProd" min="-2" pref="109" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerWaitTimeCons" min="-2" pref="109" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -152,23 +152,23 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSpinnerProducers" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerUpperR1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerWaitTimeProd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSpinnerConsumers" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerUpperR2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerWaitTimeCons" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerConsumers2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerBufferSize" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinnerConsumers1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jSpinnerLowerR" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -233,7 +233,7 @@
                     <Property name="text" type="java.lang.String" value="Cantidad"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinnerConsumers1">
+                <Component class="javax.swing.JSpinner" name="jSpinnerLowerR">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="1" maximum="8" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -245,21 +245,21 @@
                     <Property name="text" type="java.lang.String" value="El valor de &quot;n&quot; tiene que ser menor que el de &quot;m&quot;"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinnerConsumers2">
+                <Component class="javax.swing.JSpinner" name="jSpinnerBufferSize">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="1" maximum="100" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinnerUpperR1">
+                <Component class="javax.swing.JSpinner" name="jSpinnerWaitTimeProd">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="10" maximum="10000" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JSpinner" name="jSpinnerUpperR2">
+                <Component class="javax.swing.JSpinner" name="jSpinnerWaitTimeCons">
                   <Properties>
                     <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
                       <SpinnerModel initial="10" maximum="10000" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
