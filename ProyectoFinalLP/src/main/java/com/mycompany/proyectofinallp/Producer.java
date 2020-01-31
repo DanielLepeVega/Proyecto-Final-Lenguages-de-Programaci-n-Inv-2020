@@ -12,7 +12,8 @@ public class Producer extends Thread {
     Buffer buffer;
     private int waitTime;
     
-    Producer(int id, Buffer buffer, int waitTime) {
+    Producer(int id, Buffer buffer, int waitTime, int lowerRange, 
+            int upperRange) {
         this.id = id;
         this.buffer = buffer;
     }

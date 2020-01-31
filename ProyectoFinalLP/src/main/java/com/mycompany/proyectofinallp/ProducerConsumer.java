@@ -38,7 +38,8 @@ public class ProducerConsumer extends Thread{
         
         // Start producers
         for (int i = 0; i < this.numProducers; i++) {
-            Producer producer = new Producer(i, buffer, this.waitTimeProducer);
+            Producer producer = new Producer(i, buffer, this.waitTimeProducer, 
+            this.lowerRange, this.upperRange);
             producer.start();
             this.listProducers.add(producer);
         }
@@ -55,7 +56,7 @@ public class ProducerConsumer extends Thread{
     public void stopProducerConsumer() {
         
         // Stop in progress
-        this.inProgress = false;
+        inProgress = false;
         
         // Stop consumer and producer
         // Stop producers
