@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 public class Producer extends Thread {
     
+    private boolean exit;
     public int id;
     Buffer buffer;
     
@@ -22,7 +23,8 @@ public class Producer extends Thread {
         Random r = new Random(System.currentTimeMillis());
         char product;
         
-        for(int i=0 ; i< this.buffer.n ; i++) {
+        
+        while(true) {
             product = products.charAt(r.nextInt(5));
             this.buffer.produce(product);
             //System.out.println("Producer produced: " + product);
@@ -34,6 +36,11 @@ public class Producer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    
+    public void stopT() {
+        
     }
     
 }
