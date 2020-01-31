@@ -10,8 +10,9 @@ public class Producer extends Thread {
     private boolean exit;
     public int id;
     Buffer buffer;
+    private int waitTime;
     
-    Producer(int id, Buffer buffer) {
+    Producer(int id, Buffer buffer, int waitTime) {
         this.id = id;
         this.buffer = buffer;
     }
@@ -31,7 +32,7 @@ public class Producer extends Thread {
             Buffer.print("Producer produced: " + product);
             
             try {
-                Thread.sleep(2000);
+                Thread.sleep(this.waitTime);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -39,8 +40,6 @@ public class Producer extends Thread {
     }
     
     
-    public void stopT() {
-        
-    }
+    
     
 }

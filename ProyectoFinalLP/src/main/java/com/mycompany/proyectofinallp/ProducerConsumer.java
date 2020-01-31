@@ -4,16 +4,28 @@ import java.util.*;
 public class ProducerConsumer extends Thread{
     
     public static boolean inProgress;
-    private int bufferSize, numProducers, numConsumers;
+    private final int bufferSize, 
+            numProducers, 
+            numConsumers,
+            waitTimeProducer,
+            waitTimeConsumer,
+            lowerRange,
+            upperRange;
     private Consumer consumer;
     private Producer producer;
     private ArrayList<Consumer> listConsumers;
     private ArrayList<Producer> listProducers;
     
-    public ProducerConsumer(int bufferSize, int numProducers, int numConsumers) {
+    public ProducerConsumer(int bufferSize, int numProducers, int numConsumers,
+            int waitTimeProducer, int waitTimeConsumer, int lowerRange, int upperRange) {
         this.bufferSize = bufferSize;
         this.numProducers = numProducers;
         this.numConsumers = numConsumers;
+        this.waitTimeProducer = waitTimeProducer;
+        this.waitTimeConsumer = waitTimeConsumer;
+        this.lowerRange = lowerRange;
+        this.upperRange = upperRange;        
+        
     }
     
     public void startProducerConsumer() {
@@ -26,14 +38,14 @@ public class ProducerConsumer extends Thread{
         
         // Start producers
         for (int i = 0; i < this.numProducers; i++) {
-            Producer producer = new Producer(i, buffer);
+            Producer producer = new Producer(i, buffer, this.waitTimeProducer);
             producer.start();
             this.listProducers.add(producer);
         }
         
         // Start consumers
         for (int i = 0; i < this.numConsumers; i++) {
-            Consumer consumer = new Consumer(i, buffer);
+            Consumer consumer = new Consumer(i, buffer, this.waitTimeConsumer);
             consumer.start();
             this.listConsumers.add(consumer);
         }

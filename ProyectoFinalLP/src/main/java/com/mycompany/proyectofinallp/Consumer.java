@@ -8,10 +8,12 @@ public class Consumer extends Thread {
     
     public int id;
     Buffer buffer;
+    private int waitTime;
     
-    Consumer(int id, Buffer buffer) {
+    Consumer(int id, Buffer buffer, int waitTime) {
         this.id = id;
         this.buffer = buffer;
+        this.waitTime = waitTime;
     }
     
     @Override
@@ -25,7 +27,7 @@ public class Consumer extends Thread {
             Buffer.print("Consumer consumed: " + product);
             
             try {
-                Thread.sleep(2000);
+                Thread.sleep(this.waitTime);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
