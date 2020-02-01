@@ -16,13 +16,14 @@ public class GUIFrame extends javax.swing.JFrame {
 
     private boolean flagToStartThreads; 
     private ProducerConsumer threadManager;
+    
     /**
      * Creates new form GUIFrame
      */
     public GUIFrame() {
         initComponents();
 //        this.setSize(431, 343);
-        this.jLabel9.setVisible(false);
+        this.jLabelError.setVisible(false);
         this.flagToStartThreads = false;
     }
 
@@ -49,7 +50,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSpinnerLowerR = new javax.swing.JSpinner();
-        jLabel9 = new javax.swing.JLabel();
+        jLabelError = new javax.swing.JLabel();
         jSpinnerBufferSize = new javax.swing.JSpinner();
         jSpinnerWaitTimeProd = new javax.swing.JSpinner();
         jSpinnerWaitTimeCons = new javax.swing.JSpinner();
@@ -89,6 +90,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jLabel2.setText("Consumidores");
 
         jSpinnerProducers.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        jSpinnerProducers.setToolTipText("");
 
         jSpinnerConsumers.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
@@ -98,7 +100,8 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jSpinnerLowerR.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
 
-        jLabel9.setText("El valor de \"n\" tiene que ser menor que el de \"m\"");
+        jLabelError.setForeground(new java.awt.Color(255, 51, 0));
+        jLabelError.setText("El valor de \"n\" tiene que ser menor que el de \"m\"");
 
         jSpinnerBufferSize.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
@@ -143,7 +146,7 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(jSpinnerWaitTimeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLabel9))
+                        .addComponent(jLabelError))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -178,7 +181,7 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jSpinnerLowerR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabelError)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -308,118 +311,88 @@ public class GUIFrame extends javax.swing.JFrame {
     
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         // TODO add your handling code here:
-        this.setFlagToStartThreads(true);
-        //Validar n menor que m
-        System.out.println("--------------------------antes if 1");
-<<<<<<< HEAD
-        if((Integer)this.jSpinnerUpperR.getValue() > (Integer)this.jSpinnerConsumers1.getValue()){
-=======
-        if((Integer)this.jSpinnerLowerR.getValue() < (Integer)this.jSpinnerUpperR.getValue()){
->>>>>>> aaf3874abb678ff5eaf4a31a40534e432e87fdc3
-            this.jLabel9.setVisible(true);
-            System.out.println("Validar n menor que m");
-            this.setFlagToStartThreads(true);
-        }
-        System.out.println("--------------------------antes if 2");        
-        if((Integer)this.jSpinnerProducers.getValue()>10 || (Integer)this.jSpinnerProducers.getValue()<1){
-            System.out.println("--------------------------1");
-            System.out.println("jSpinnerProducers mayor a 10 o menor a 1");
-            this.setFlagToStartThreads(false);
-        }
-        System.out.println("--------------------------antes if 3");        
-        if((Integer)this.jSpinnerConsumers.getValue()>10 || (Integer)this.jSpinnerConsumers.getValue()<1){
-            System.out.println("-------------------------2");
-            System.out.println("jSpinnerConsumers mayor a 10 o menor a 1");
-            this.setFlagToStartThreads(false);
-        }
-        System.out.println("--------------------------antes if 4");        
-        if((Integer)this.jSpinnerBufferSize.getValue()>100 || (Integer)this.jSpinnerBufferSize.getValue()<1){
-            System.out.println("-------------------------3");
-            System.out.println("jSpinnerConsumers2 mayor a 100 o menor a 1");
-            this.setFlagToStartThreads(false);
-        }    
-        System.out.println("--------------------------antes if 5");        
-        if((Integer)this.jSpinnerWaitTimeProd.getValue()>10000 || (Integer)this.jSpinnerWaitTimeProd.getValue()<0){
-            System.out.println("-------------------------4");
-            System.out.println("jSpinnerUpperR1 mayor a 10000 o menor a 0");
-            this.setFlagToStartThreads(false);
-        }
-        System.out.println("--------------------------antes if 6");        
-        if((Integer)this.jSpinnerWaitTimeCons.getValue()>10000 || (Integer)this.jSpinnerWaitTimeCons.getValue()<0){
-            System.out.println("-------------------------5");
-            System.out.println("jSpinnerUpperR2 mayor a 10000 o menor a 0");
-            this.setFlagToStartThreads(false);
-        }
         
-        if((Integer)this.jSpinnerUpperR.getValue() > (Integer)this.jSpinnerConsumers1.getValue()){
-            this.jLabel9.setVisible(true);
-            System.out.println("Validado n Si es menor que m");
-            this.setFlagToStartThreads(true);
-        }
+        int inputProducers = (Integer) this.jSpinnerProducers.getValue();
+        int inputWaitTimeProd = (Integer) this.jSpinnerWaitTimeProd.getValue();
         
-        System.out.println("-------------------------6");
+        int inputConsumers = (Integer) this.jSpinnerConsumers.getValue();
+        int inputWaitTimeCons = (Integer) this.jSpinnerWaitTimeCons.getValue();
         
-        //si el threadManager es null crear el threadManager
-        System.out.println("--------------------------antes if 6");
-        System.out.println(this.getFlagToStartThreads());
-        this.colorChanger();
-        System.out.println("*****");
-        if(this.threadManager==null){
-            System.out.println("--------------------------7");
-            this.threadManagerCreator();
-            System.out.println("--------------------------8");
-            System.out.println("Objeto creado 1");
-            System.out.println("-------------------------todo creado");
+        int inputBufferSize = (Integer) this.jSpinnerBufferSize.getValue();
+        
+        int inputLowRange = (Integer) this.jSpinnerLowerR.getValue();
+        int inputUpRange = (Integer) this.jSpinnerUpperR.getValue();
+        
+        // display errors if any
+        this.displayErrors(this.getErrors(inputProducers, inputWaitTimeProd, 
+                inputConsumers, inputWaitTimeCons, inputBufferSize, inputLowRange, 
+                inputUpRange));
+            
+        if (!ProducerConsumer.inProgress) {
+            this.threadManager = new ProducerConsumer(
+                inputBufferSize,
+                inputProducers,
+                inputConsumers,
+                inputWaitTimeProd,
+                inputWaitTimeCons,
+                inputLowRange,
+                inputUpRange
+            );
+            
+            this.threadManager.startProducerConsumer();
+            this.changeJButtonInicio("DETENER", Color.red);
+
+        } else {
+            this.threadManager.stopProducerConsumer();
+            this.changeJButtonInicio("INICIAR", new Color(0, 102, 51));
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    public void colorChanger(){
-        //Cambiar botón y detener threads
-        System.out.println("colorChanger");
-        if (this.getFlagToStartThreads()) {
-            System.out.println("-------------------------7");
-            changeJButtonInicio();
-            //return true;
-        } else {
-            this.threadManager.stopProducerConsumer();
-            System.out.println("-------------------------else");
-            changeJButtonInicio();
-            //return true;
-        }
-    }
     
-<<<<<<< HEAD
-    private void threadManagerCreator(){
-        System.out.println("*");
-        this.threadManager = new ProducerConsumer((Integer)this.jSpinnerConsumers2.getValue(), 
-=======
-    private boolean threadManagerCreator(){
-        this.threadManager = new ProducerConsumer((Integer)this.jSpinnerBufferSize.getValue(), 
->>>>>>> aaf3874abb678ff5eaf4a31a40534e432e87fdc3
-                                                        (Integer)this.jSpinnerProducers.getValue(), 
-                                                        (Integer)this.jSpinnerConsumers.getValue(), 
-                                                        (Integer)this.jSpinnerWaitTimeProd.getValue(),
-                                                        (Integer)this.jSpinnerWaitTimeCons.getValue(),
-                                                        (Integer)this.jSpinnerLowerR.getValue(),
-                                                        (Integer)this.jSpinnerUpperR.getValue());
-        System.out.println("**");
-        this.threadManager.startProducerConsumer();
-        System.out.println("***");
+    private void changeJButtonInicio(String text, Color color) {
+        this.jButtonInicio.setText(text);
+        this.jButtonInicio.setForeground(color);
     }
+   
     
-    private void changeJButtonInicio() {
-        if (this.jButtonInicio.getText().equals("INICIAR")) {
-            this.jButtonInicio.setText("DETENER");
-            this.jButtonInicio.setForeground(Color.red);
-        } else {
-            this.jButtonInicio.setText("INICIAR");
-            this.jButtonInicio.setForeground(new Color(0, 102, 51));
+    private String getErrors(int producers, int wtProducers, int consumers, 
+            int wtConsumers, int bufferSize, int lowRange, int upRange) {
+
+        String errors = "";
+        
+        // Validate producers
+        if (!(1 <= producers && producers <= 10)) 
+            errors += "Numero de productores debe estar entre (1-10)\n";
+        
+        // Validate wait time producers
+        if (!(0 <= wtProducers && wtProducers <= 10000))
+            errors += "Tiempo de espera de productores invalido (0-10000 ms)\n";
+        
+        // Validate consumers
+        if (!(1 <= consumers && consumers <= 10))
+            errors += "Numero de productores debe estar entre (1-10)\n";
+
+        // Validate wait time consumers
+        if (!(0 <= wtConsumers && wtConsumers <= 10000))
+            errors += "Tiempo de espera de consumidores invalido (0-10000 ms)\n";
+        
+        // Validate buffer size
+        if (!(1 <= bufferSize && bufferSize <= 100))
+            errors += "Tamaño de buffer invalido (1-100)\n";
+        
+        //Validar n menor que m
+        if(!(0 <= lowRange && lowRange <= upRange && upRange <= 9)){
+            errors += "Rango de [n,m] invalido (0 <= n <= m <= 9)\n";
         }
         
-        
+        return errors;
     }
-    private void validateFields() {
-        
+    
+    private void displayErrors(String errors) {
+        if (errors.length() > 0) {
+            this.jLabelError.setText(errors);
+            this.jLabelError.setVisible(true);
+        }
     }
     /**
      * @param args the command line arguments
@@ -466,7 +439,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

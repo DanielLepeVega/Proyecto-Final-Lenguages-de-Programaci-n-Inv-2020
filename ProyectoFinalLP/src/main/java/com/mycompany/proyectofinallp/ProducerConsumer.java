@@ -2,7 +2,7 @@ package com.mycompany.proyectofinallp;
 import java.util.*;
 import java.lang.Integer;
 
-public class ProducerConsumer extends Thread{
+public class ProducerConsumer {
     
     public static boolean inProgress;
     private final Integer bufferSize, 
@@ -12,8 +12,6 @@ public class ProducerConsumer extends Thread{
             waitTimeConsumer,
             lowerRange,
             upperRange;
-    private Consumer consumer;
-    private Producer producer;
     private ArrayList<Consumer> listConsumers;
     private ArrayList<Producer> listProducers;
     
