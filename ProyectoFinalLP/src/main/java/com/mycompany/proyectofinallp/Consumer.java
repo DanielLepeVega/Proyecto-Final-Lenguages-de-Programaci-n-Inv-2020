@@ -9,11 +9,13 @@ public class Consumer extends Thread {
     public int id;
     Buffer buffer;
     private int waitTime;
+    private ConsumerGroup consumerGroup;
     
-    Consumer(int id, Buffer buffer, int waitTime) {
+    Consumer(int id, Buffer buffer, int waitTime, ConsumerGroup consumerGroup) {
         this.id = id;
         this.buffer = buffer;
         this.waitTime = waitTime;
+        this.consumerGroup = consumerGroup;
     }
     
     @Override
@@ -21,16 +23,18 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         String product;
         
-        for(int i=0 ; i<this.buffer.n ; i++) {
-            product = this.buffer.consume();
+        while(true) {
+            product = this.consumerGroup.consume();
             //System.out.println("Consumer consumed: " + product);
-            Buffer.print("Consumer consumed: " + product);
+            Buffer.print("Consumer " + this.id + " consumed: " + product);
             
             try {
                 Thread.sleep(this.waitTime);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            
         }
     }
 }

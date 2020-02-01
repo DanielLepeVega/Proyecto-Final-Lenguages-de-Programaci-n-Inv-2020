@@ -105,9 +105,9 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jSpinnerBufferSize.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
-        jSpinnerWaitTimeProd.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
+        jSpinnerWaitTimeProd.setModel(new javax.swing.SpinnerNumberModel(1000, 0, 10000, 1));
 
-        jSpinnerWaitTimeCons.setModel(new javax.swing.SpinnerNumberModel(10, 0, 10000, 1));
+        jSpinnerWaitTimeCons.setModel(new javax.swing.SpinnerNumberModel(1000, 0, 10000, 1));
 
         jButtonInicio.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(0, 102, 51));

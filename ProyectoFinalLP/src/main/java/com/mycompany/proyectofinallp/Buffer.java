@@ -9,11 +9,11 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private LinkedList<String> slots;
+    private LinkedList<String> buffer;
     public int n;
     
     Buffer(int n) {
-        this.slots = new LinkedList<>();
+        this.buffer = new LinkedList<>();
         this.n = n;
     }
     
@@ -21,29 +21,31 @@ public class Buffer {
     synchronized String consume() {
         String product = "";
         
-        if(this.slots.isEmpty()) {
+        
+        
+        if(this.buffer.isEmpty()) {
             try {
+                System.out.println(Thread.currentThread().getName() +" Waiting to consume...");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        product = this.slots.getFirst();
-        this.slots.removeFirst();
+        System.out.println(Thread.currentThread().getName() + " trying to consume product");
+        product = this.buffer.remove();
         notify();
-        
         return product;
     }
     
     synchronized void produce(String product) {
-        if(this.slots.size() == this.n) {
+        if(this.buffer.size() == this.n) {
             try {
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        this.slots.add(product);
+        this.buffer.add(product);
         
         notify();
     }

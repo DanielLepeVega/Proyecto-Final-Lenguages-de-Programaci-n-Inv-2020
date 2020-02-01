@@ -13,11 +13,11 @@ import java.util.Random;
  */
 public class SchemeExpressionGen {
     
-    private int id;
+    private String id;
     private char operador;
     private int a, b;
     
-    public SchemeExpressionGen(int id, int operador, int lowerRange, int upperRange) {
+    public SchemeExpressionGen(String id, int operador, int lowerRange, int upperRange) {
         this.id = id;
         this.setOperador(operador);
         this.setSchemeNumbers(lowerRange, upperRange);

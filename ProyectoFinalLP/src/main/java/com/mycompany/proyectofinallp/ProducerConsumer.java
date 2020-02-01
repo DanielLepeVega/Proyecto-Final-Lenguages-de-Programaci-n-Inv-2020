@@ -1,6 +1,5 @@
 package com.mycompany.proyectofinallp;
 import java.util.*;
-import java.lang.Integer;
 
 public class ProducerConsumer {
     
@@ -12,8 +11,9 @@ public class ProducerConsumer {
             waitTimeConsumer,
             lowerRange,
             upperRange;
-    private ArrayList<Consumer> listConsumers;
-    private ArrayList<Producer> listProducers;
+    
+    private ProducerGroup producerGroup;
+    private ConsumerGroup consumerGroup;
     
     public ProducerConsumer(Integer bufferSize, Integer numProducers, Integer numConsumers,
             Integer waitTimeProducer, Integer waitTimeConsumer, Integer lowerRange, int upperRange) {
@@ -23,7 +23,8 @@ public class ProducerConsumer {
         this.waitTimeProducer = waitTimeProducer;
         this.waitTimeConsumer = waitTimeConsumer;
         this.lowerRange = lowerRange;
-        this.upperRange = upperRange;        
+        this.upperRange = upperRange;  
+        
         
     }
     
@@ -35,19 +36,22 @@ public class ProducerConsumer {
         // Start buffer
         Buffer buffer = new Buffer(this.bufferSize);
         
+        // Instantiate groups
+        this.producerGroup = new ProducerGroup(buffer);
+        this.consumerGroup = new ConsumerGroup(buffer);
+        
         // Start producers
         for (int i = 0; i < this.numProducers; i++) {
-            Producer producer = new Producer(i, buffer, this.waitTimeProducer, 
-            this.lowerRange, this.upperRange);
+            Producer producer = new Producer((i+1), this.producerGroup,
+                this.waitTimeProducer, this.lowerRange, this.upperRange);
             producer.start();
-            this.listProducers.add(producer);
         }
         
         // Start consumers
         for (int i = 0; i < this.numConsumers; i++) {
-            Consumer consumer = new Consumer(i, buffer, this.waitTimeConsumer);
+            Consumer consumer = new Consumer((i+1), buffer, this.waitTimeConsumer,
+                this.consumerGroup);
             consumer.start();
-            this.listConsumers.add(consumer);
         }
         
     }
@@ -59,13 +63,13 @@ public class ProducerConsumer {
         
         // Stop consumer and producer
         // Stop producers
-        for (int i = 0; i < this.numProducers; i++) {
-            this.listProducers.get(i).stop();
-        }
-        //Stop consumers
-        for (int i = 0; i < this.numConsumers; i++) {
-            this.listConsumers.get(i).stop();
-        }
+//        for (int i = 0; i < this.numProducers; i++) {
+//            this.listProducers.get(i).stop();
+//        }
+//        //Stop consumers
+//        for (int i = 0; i < this.numConsumers; i++) {
+//            this.listConsumers.get(i).stop();
+//        }
     }
     
 //    public static void main(String[] args) {
