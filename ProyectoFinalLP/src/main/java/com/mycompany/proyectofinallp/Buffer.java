@@ -25,7 +25,7 @@ public class Buffer {
         
         if(this.buffer.isEmpty()) {
             try {
-                System.out.println(Thread.currentThread().getName() +" Waiting to consume...");
+                System.out.println(Thread.currentThread().getName() +" Waiting to consume...\n");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);

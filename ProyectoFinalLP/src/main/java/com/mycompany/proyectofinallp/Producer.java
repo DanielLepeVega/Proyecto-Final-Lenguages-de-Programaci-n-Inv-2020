@@ -12,11 +12,12 @@ public class Producer extends Thread {
     private int waitTime;
     private int lowerRange, upperRange;
     
+    private String product;
     
-    Producer(int id, ProducerGroup producerGroup, int waitTime, int lowerRange,
+    
+    Producer(int id, int waitTime, int lowerRange,
             int upperRange) {
         this.id = id;
-        this.producerGroup = producerGroup;
         this.waitTime = waitTime;
         this.lowerRange = lowerRange;
         this.upperRange = upperRange;
@@ -26,19 +27,24 @@ public class Producer extends Thread {
         return Thread.currentThread().getName() + " " + Integer.toString(numberOfExp++);
     }
     
+    public synchronized String getProduct() {
+        return this.product;
+    }
+    
     @Override
     public void run() {
         System.out.println("Running Producer...");
         Random r = new Random(System.currentTimeMillis());
         int numberOfExp = 1;
-        String product;
         
         while(true) {
-            product = new SchemeExpressionGen(
+            this.product = new SchemeExpressionGen(
                     produceId(numberOfExp++), 
                     r.nextInt(4), 
                     this.lowerRange, this.upperRange).toString();
-            this.producerGroup.sendToBuffer(product);
+            
+            Buffer.print("Producer " + this.id + "(" + Thread.currentThread().getName() + ")"
+                    + " produced: " + product + "\n");
             
             try {
                 Thread.sleep(this.waitTime);

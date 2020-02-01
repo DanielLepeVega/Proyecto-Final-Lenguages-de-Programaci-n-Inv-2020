@@ -11,12 +11,12 @@ public class Consumer extends Thread {
     private int waitTime;
     private ConsumerGroup consumerGroup;
     
-    Consumer(int id, Buffer buffer, int waitTime, ConsumerGroup consumerGroup) {
+    Consumer(int id, Buffer buffer, int waitTime) {
         this.id = id;
         this.buffer = buffer;
         this.waitTime = waitTime;
-        this.consumerGroup = consumerGroup;
     }
+   
     
     @Override
     public void run() {
@@ -26,7 +26,8 @@ public class Consumer extends Thread {
         while(true) {
             product = this.consumerGroup.consume();
             //System.out.println("Consumer consumed: " + product);
-            Buffer.print("Consumer " + this.id + " consumed: " + product);
+            Buffer.print("Consumer " + this.id + "(" + Thread.currentThread().getName() + ")"
+                    + " consumed: " + product + "\n");
             
             try {
                 Thread.sleep(this.waitTime);

@@ -1,5 +1,4 @@
 package com.mycompany.proyectofinallp;
-import java.util.*;
 
 public class ProducerConsumer {
     
@@ -42,17 +41,19 @@ public class ProducerConsumer {
         
         // Start producers
         for (int i = 0; i < this.numProducers; i++) {
-            Producer producer = new Producer((i+1), this.producerGroup,
-                this.waitTimeProducer, this.lowerRange, this.upperRange);
-            producer.start();
+            producerGroup.addProducer(new Producer((i+1), this.waitTimeProducer,
+                    this.lowerRange, this.upperRange));
         }
+        
+        this.producerGroup.printSize();
         
         // Start consumers
         for (int i = 0; i < this.numConsumers; i++) {
-            Consumer consumer = new Consumer((i+1), buffer, this.waitTimeConsumer,
-                this.consumerGroup);
-            consumer.start();
+            consumerGroup.addConsumer( new Consumer((i+1), buffer, this.waitTimeConsumer) );
         }
+                
+        this.producerGroup.start();
+        this.consumerGroup.start();
         
     }
     
@@ -60,6 +61,7 @@ public class ProducerConsumer {
         
         // Stop in progress
         inProgress = false;
+    }
         
         // Stop consumer and producer
         // Stop producers
@@ -70,7 +72,7 @@ public class ProducerConsumer {
 //        for (int i = 0; i < this.numConsumers; i++) {
 //            this.listConsumers.get(i).stop();
 //        }
-    }
+    
     
 //    public static void main(String[] args) {
 //        
