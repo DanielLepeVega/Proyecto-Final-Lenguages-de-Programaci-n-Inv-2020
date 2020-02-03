@@ -55,11 +55,6 @@ public class ProducerConsumer {
             this.consumerList.add(new Consumer((i+1), this.waitTimeConsumer, buffer));
             this.consumerList.get(i).start();
         }
-        
-        
-        
-                
-        
     }
     
     public void stopProducerConsumer() {
@@ -67,6 +62,7 @@ public class ProducerConsumer {
         // Stop in progress
         inProgress = false;
         
+        // Stop producer
         for (int i = 0; i < this.numProducers; i++) {
             this.producerList.get(i).halt();
         }        
@@ -77,9 +73,6 @@ public class ProducerConsumer {
         
         System.out.println("All producers and consumers stopped.");
     }
-        
-        // Stop consumer and producer
-        // Stop producers
         
     
     
