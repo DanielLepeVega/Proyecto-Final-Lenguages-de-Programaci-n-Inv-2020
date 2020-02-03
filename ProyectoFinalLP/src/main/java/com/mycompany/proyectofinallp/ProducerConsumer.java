@@ -1,5 +1,8 @@
 package com.mycompany.proyectofinallp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProducerConsumer {
     
     public static boolean inProgress;
@@ -11,8 +14,8 @@ public class ProducerConsumer {
             lowerRange,
             upperRange;
     
-    private ProducerGroup producerGroup;
-    private ConsumerGroup consumerGroup;
+    private List<Producer> producerList;
+    private List<Consumer> consumerList;
     
     public ProducerConsumer(Integer bufferSize, Integer numProducers, Integer numConsumers,
             Integer waitTimeProducer, Integer waitTimeConsumer, Integer lowerRange, int upperRange) {
@@ -35,25 +38,27 @@ public class ProducerConsumer {
         // Start buffer
         Buffer buffer = new Buffer(this.bufferSize);
         
-        // Instantiate groups
-        this.producerGroup = new ProducerGroup(buffer);
-        this.consumerGroup = new ConsumerGroup(buffer);
+        // Initialize producer and consumer list
+        this.producerList = new ArrayList<>();
+        this.consumerList = new ArrayList<>();
         
-        // Start producers
+        
+        // Create and start producers
         for (int i = 0; i < this.numProducers; i++) {
-            producerGroup.addProducer(new Producer((i+1), this.waitTimeProducer,
-                    this.lowerRange, this.upperRange));
+            this.producerList.add(new Producer((i+1), this.waitTimeProducer,
+                    this.lowerRange, this.upperRange, buffer));
+            this.producerList.get(i).start();
         }
         
-        this.producerGroup.printSize();
-        
-        // Start consumers
+        // Create and start consumers
         for (int i = 0; i < this.numConsumers; i++) {
-            consumerGroup.addConsumer( new Consumer((i+1), buffer, this.waitTimeConsumer) );
+            this.consumerList.add(new Consumer((i+1), this.waitTimeConsumer, buffer));
+            this.consumerList.get(i).start();
         }
+        
+        
+        
                 
-        this.producerGroup.start();
-        this.consumerGroup.start();
         
     }
     

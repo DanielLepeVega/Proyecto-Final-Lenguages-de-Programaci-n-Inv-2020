@@ -7,14 +7,13 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     
     public int id;
-    Buffer buffer;
     private int waitTime;
-    private ConsumerGroup consumerGroup;
+    Buffer buffer;
     
-    Consumer(int id, Buffer buffer, int waitTime) {
+    Consumer(int id, int waitTime, Buffer buffer) {
         this.id = id;
-        this.buffer = buffer;
         this.waitTime = waitTime;
+        this.buffer = buffer;
     }
    
     
@@ -24,10 +23,10 @@ public class Consumer extends Thread {
         String product;
         
         while(true) {
-            product = this.consumerGroup.consume();
-            //System.out.println("Consumer consumed: " + product);
-            Buffer.print("Consumer " + this.id + "(" + Thread.currentThread().getName() + ")"
-                    + " consumed: " + product + "\n");
+            product = this.buffer.consume();
+
+//            Buffer.print("Consumer " + this.id + "(" + Thread.currentThread().getName() + ")"
+//                + " consumed: " + product + "\n");
             
             try {
                 Thread.sleep(this.waitTime);

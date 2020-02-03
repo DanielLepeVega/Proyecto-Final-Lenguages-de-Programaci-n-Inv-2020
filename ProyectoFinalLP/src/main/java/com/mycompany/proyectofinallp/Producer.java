@@ -8,19 +8,20 @@ import java.util.logging.Logger;
 public class Producer extends Thread {
     
     private int id;
-    private ProducerGroup producerGroup;
     private int waitTime;
     private int lowerRange, upperRange;
+    private Buffer buffer;
     
     private String product;
     
     
     Producer(int id, int waitTime, int lowerRange,
-            int upperRange) {
+            int upperRange, Buffer buffer) {
         this.id = id;
         this.waitTime = waitTime;
         this.lowerRange = lowerRange;
         this.upperRange = upperRange;
+        this.buffer = buffer;
     }
     
     private String produceId(int numberOfExp) {
@@ -37,14 +38,18 @@ public class Producer extends Thread {
         Random r = new Random(System.currentTimeMillis());
         int numberOfExp = 1;
         
+        String product;
+        
         while(true) {
-            this.product = new SchemeExpressionGen(
+            product = new SchemeExpressionGen(
                     produceId(numberOfExp++), 
                     r.nextInt(4), 
                     this.lowerRange, this.upperRange).toString();
             
-            Buffer.print("Producer " + this.id + "(" + Thread.currentThread().getName() + ")"
-                    + " produced: " + product + "\n");
+            this.buffer.produce(product);
+            
+//            Buffer.print("Producer " + this.id + "(" + Thread.currentThread().getName() + ")"
+//                    + " produced: " + product + "\n");
             
             try {
                 Thread.sleep(this.waitTime);
