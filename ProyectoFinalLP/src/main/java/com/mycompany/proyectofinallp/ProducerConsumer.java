@@ -66,17 +66,21 @@ public class ProducerConsumer {
         
         // Stop in progress
         inProgress = false;
+        
+        for (int i = 0; i < this.numProducers; i++) {
+            this.producerList.get(i).halt();
+        }        
+        //Stop consumers
+        for (int i = 0; i < this.numConsumers; i++) {
+            this.consumerList.get(i).halt();
+        }
+        
+        System.out.println("All producers and consumers stopped.");
     }
         
         // Stop consumer and producer
         // Stop producers
-//        for (int i = 0; i < this.numProducers; i++) {
-//            this.listProducers.get(i).stop();
-//        }
-//        //Stop consumers
-//        for (int i = 0; i < this.numConsumers; i++) {
-//            this.listConsumers.get(i).stop();
-//        }
+        
     
     
 //    public static void main(String[] args) {

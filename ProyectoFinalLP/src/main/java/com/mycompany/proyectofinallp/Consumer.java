@@ -10,10 +10,17 @@ public class Consumer extends Thread {
     private int waitTime;
     Buffer buffer;
     
+    private boolean halt;
+    
     Consumer(int id, int waitTime, Buffer buffer) {
         this.id = id;
         this.waitTime = waitTime;
         this.buffer = buffer;
+        this.halt = false;
+    }
+    
+    public void halt() {
+        this.halt = true;
     }
    
     
@@ -22,7 +29,7 @@ public class Consumer extends Thread {
         System.out.println("Running Consumer...");
         String product;
         
-        while(true) {
+        while(!this.halt) {
             product = this.buffer.consume();
 
 //            Buffer.print("Consumer " + this.id + "(" + Thread.currentThread().getName() + ")"

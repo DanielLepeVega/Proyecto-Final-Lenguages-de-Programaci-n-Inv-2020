@@ -14,6 +14,8 @@ public class Producer extends Thread {
     
     private String product;
     
+    private boolean halt;
+    
     
     Producer(int id, int waitTime, int lowerRange,
             int upperRange, Buffer buffer) {
@@ -22,6 +24,7 @@ public class Producer extends Thread {
         this.lowerRange = lowerRange;
         this.upperRange = upperRange;
         this.buffer = buffer;
+        this.halt = false;
     }
     
     private String produceId(int numberOfExp) {
@@ -32,6 +35,10 @@ public class Producer extends Thread {
         return this.product;
     }
     
+    public void halt() {
+        this.halt = true;
+    }
+    
     @Override
     public void run() {
         System.out.println("Running Producer...");
@@ -40,7 +47,7 @@ public class Producer extends Thread {
         
         String product;
         
-        while(true) {
+        while(!this.halt) {
             product = new SchemeExpressionGen(
                     produceId(numberOfExp++), 
                     r.nextInt(4), 
