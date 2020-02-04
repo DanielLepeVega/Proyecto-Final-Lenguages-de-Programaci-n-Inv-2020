@@ -26,13 +26,13 @@ public class GUIFrame extends javax.swing.JFrame {
 //        this.setSize(431, 343);
         this.jLabelError.setVisible(false);
         this.flagToStartThreads = false;
-        TableColumnModel columnModel = jTable2.getColumnModel();
+        TableColumnModel columnModel = this.jTable2.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(20);
         columnModel.getColumn(1).setPreferredWidth(100);
         columnModel.getColumn(2).setPreferredWidth(20);
         columnModel.getColumn(3).setPreferredWidth(50);
         
-        TableColumnModel columnModel1 = jTable1.getColumnModel();
+        TableColumnModel columnModel1 = this.jTable1.getColumnModel();
         columnModel1.getColumn(0).setPreferredWidth(20);
         columnModel1.getColumn(1).setPreferredWidth(100);
     }
@@ -409,14 +409,6 @@ public class GUIFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void updateToDos() {
-        
-    }
-    
-    public void updateProcessTab() {
-        
-    }
-    
     private void changeJButtonInicio(String text, Color color) {
         this.jButtonInicio.setText(text);
         this.jButtonInicio.setForeground(color);
