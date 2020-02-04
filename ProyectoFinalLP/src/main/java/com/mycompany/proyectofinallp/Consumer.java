@@ -26,14 +26,13 @@ public class Consumer extends Thread {
     
     @Override
     public void run() {
-        System.out.println("Running Consumer...");
+        System.out.println("Running Consumer " + this.id + "...\n");
         String product;
         
         while(!this.halt) {
             product = this.buffer.consume();
 
-//            Buffer.print("Consumer " + this.id + "(" + Thread.currentThread().getName() + ")"
-//                + " consumed: " + product + "\n");
+            Buffer.print("Consumer " + this.id + " consumed: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
             
             try {
                 Thread.sleep(this.waitTime);

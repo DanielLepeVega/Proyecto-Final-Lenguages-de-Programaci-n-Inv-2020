@@ -41,7 +41,7 @@ public class Producer extends Thread {
     
     @Override
     public void run() {
-        System.out.println("Running Producer...");
+        System.out.println("Running Producer " + this.id + "...\n");
         Random r = new Random(System.currentTimeMillis());
         int numberOfExp = 1;
         
@@ -55,8 +55,7 @@ public class Producer extends Thread {
             
             this.buffer.produce(product);
             
-//            Buffer.print("Producer " + this.id + "(" + Thread.currentThread().getName() + ")"
-//                    + " produced: " + product + "\n");
+            Buffer.print("Producer " + this.id + " produced: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
             
             try {
                 Thread.sleep(this.waitTime);
@@ -64,7 +63,6 @@ public class Producer extends Thread {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-//            if (idExpression == 10) break;
         }
     }
     

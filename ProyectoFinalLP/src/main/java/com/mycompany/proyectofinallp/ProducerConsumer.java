@@ -17,6 +17,8 @@ public class ProducerConsumer {
     private List<Producer> producerList;
     private List<Consumer> consumerList;
     
+    private Buffer buffer;
+    
     public ProducerConsumer(Integer bufferSize, Integer numProducers, Integer numConsumers,
             Integer waitTimeProducer, Integer waitTimeConsumer, Integer lowerRange, int upperRange) {
         this.bufferSize = bufferSize;
@@ -30,13 +32,17 @@ public class ProducerConsumer {
         
     }
     
+    public Buffer getBuffer() {
+        return this.buffer;
+    }
+    
     public void startProducerConsumer() {
         
         // In progress
         inProgress = true;
         
         // Start buffer
-        Buffer buffer = new Buffer(this.bufferSize);
+        this.buffer = new Buffer(this.bufferSize);
         
         // Initialize producer and consumer list
         this.producerList = new ArrayList<>();
