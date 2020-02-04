@@ -47,7 +47,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " trying to consume product");
         product = this.buffer.remove();
-        this.updater.updateConsumer("1"/*consumer.getIdConsumer*/, product.getProduct(), product.getIdProducer(), "0", this.buffer.size());
+        this.updater.updateConsumer("1"/*consumer.getIdConsumer*/, product.getProduct(), product.getIdProducer(), "0", this.buffer.size(), this.n);
 //        System.out.println(Thread.currentThread().getName() + " consumed " + product);
 //        System.out.println("Buffer size after consumption: " + this.buffer.size() + "\n");
 
@@ -66,7 +66,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " produced " + product);
         this.buffer.add(product);
-        this.updater.updateProducer(product.getIdProducer(), product.getProduct(), this.buffer.size());
+        this.updater.updateProducer(product.getIdProducer(), product.getProduct(), this.buffer.size(), this.n);
         
 //        System.out.println("Buffer size: " + this.buffer.size() + "\n");
         

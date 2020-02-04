@@ -43,22 +43,22 @@ public class Updater {
         this.modelDone.addRow(new String[] {idConsumidor, operacion, idProductor, resultado});
     }
     
-    public void updateProgressBarToDo(int bufferSize){
-        this.progressBarToDo.setValue(bufferSize);
+    public void updateProgressBarToDo(int bufferSize, int maxSize){
+        this.progressBarToDo.setValue((bufferSize * 100) / maxSize);
     }
     
     public void updateTextFieldTasksDone(){
         this.counter++;
     }
     
-    public void updateProducer(String idProductor, String product, int bufferSize){
+    public void updateProducer(String idProductor, String product, int bufferSize, int maxSize){
         this.updateTableToDos(idProductor, product);
-        this.updateProgressBarToDo(bufferSize);
+        this.updateProgressBarToDo(bufferSize, maxSize);
     }
                 
-    public void updateConsumer(String idConsumidor, String operacion, String idProductor, String resultado, int bufferSize){
+    public void updateConsumer(String idConsumidor, String operacion, String idProductor, String resultado, int bufferSize, int maxSize){
         this.updateTableDone(idConsumidor, operacion, idProductor, resultado);
-        this.updateProgressBarToDo(bufferSize);
+        this.updateProgressBarToDo(bufferSize, maxSize);
         this.updateTextFieldTasksDone();
     }
 }
