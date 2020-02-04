@@ -40,6 +40,7 @@ public class Updater {
     }
     
     public void updateTableDone(String idConsumidor, String operacion, String idProductor, String resultado){
+        //System.out.println("Imprimiendo todo antes de añadir a la tabla" + "idConsumidor: " +  idConsumidor + " operacion: " + operacion + " idProductor: " + idProductor + " resultado: " + resultado);
         this.modelDone.addRow(new String[] {idConsumidor, operacion, idProductor, resultado});
     }
     
@@ -49,6 +50,7 @@ public class Updater {
     
     public void updateTextFieldTasksDone(){
         this.counter++;
+        this.textFieldTasksDone.setText("" + this.counter);
     }
     
     public void updateProducer(String idProductor, String product, int bufferSize, int maxSize){

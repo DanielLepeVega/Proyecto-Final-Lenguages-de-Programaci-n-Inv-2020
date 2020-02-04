@@ -37,7 +37,7 @@ public class GUIFrame extends javax.swing.JFrame {
         columnModel1.getColumn(0).setPreferredWidth(20);
         columnModel1.getColumn(1).setPreferredWidth(100);
        
-        this.updater = new Updater(jTable1, jTable1, jProgressBarToDo, jTextFieldDone);
+        this.updater = new Updater(jTable1, jTable2, jProgressBarToDo, jTextFieldDone);
     }
 
     /**
@@ -283,12 +283,10 @@ public class GUIFrame extends javax.swing.JFrame {
             .addGroup(jPanelProcessLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jProgressBarToDo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPaneToDos, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProcessLayout.createSequentialGroup()
+                        .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPaneToDos, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 79, Short.MAX_VALUE)
                         .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelProcessLayout.createSequentialGroup()
@@ -296,27 +294,31 @@ public class GUIFrame extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPaneDone, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE))
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProcessLayout.createSequentialGroup()
+                    .addGroup(jPanelProcessLayout.createSequentialGroup()
+                        .addComponent(jProgressBarToDo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldDone, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))))
         );
         jPanelProcessLayout.setVerticalGroup(
             jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelProcessLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProcessLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPaneToDos, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                    .addComponent(jScrollPaneDone, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBarToDo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldDone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(72, Short.MAX_VALUE))
+                    .addGroup(jPanelProcessLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPaneToDos, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                    .addGroup(jPanelProcessLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(jScrollPaneDone, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBarToDo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldDone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
 
         jTabbedPaneMain.addTab("Procesos", jPanelProcess);
