@@ -27,15 +27,16 @@ public class Consumer extends Thread {
     @Override
     public void run() {
         System.out.println("Running Consumer " + this.id + "...\n");
-        String product;
+        Product product;
         
         while(!this.halt) {
             product = this.buffer.consume();
 
-            Buffer.print("Consumer " + this.id + " consumed: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
             
             try {
                 Thread.sleep(this.waitTime);
+                Buffer.print("Consumer " + this.id + " consumed: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

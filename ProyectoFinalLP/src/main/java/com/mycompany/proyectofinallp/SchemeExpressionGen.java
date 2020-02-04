@@ -49,6 +49,6 @@ public class SchemeExpressionGen {
     }
     
     public String toString() {
-        return "(" + this.operador + " " + this.a + " " + this.b + ")"; 
+        return this.id + " (" + this.operador + " " + this.a + " " + this.b + ")"; 
     }
 }

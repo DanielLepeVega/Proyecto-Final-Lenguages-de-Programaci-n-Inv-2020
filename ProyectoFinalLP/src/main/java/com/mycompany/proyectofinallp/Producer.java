@@ -27,7 +27,7 @@ public class Producer extends Thread {
     }
     
     private String produceId(int numberOfExp) {
-        return Thread.currentThread().getName() + " " + Integer.toString(numberOfExp++);
+        return Thread.currentThread().getName() + "_" + Integer.toString(numberOfExp++);
     }
 
     public void halt() {
@@ -40,20 +40,21 @@ public class Producer extends Thread {
         Random r = new Random(System.currentTimeMillis());
         int numberOfExp = 1;
         
-        String product;
+        Product product = new Product(Integer.toString(this.id));
         
         while(!this.halt) {
-            product = new SchemeExpressionGen(
+            product.setProduct(new SchemeExpressionGen(
                     produceId(numberOfExp++), 
                     r.nextInt(4), 
-                    this.lowerRange, this.upperRange).toString();
+                    this.lowerRange, this.upperRange).toString());
             
             this.buffer.produce(product);
             
-            Buffer.print("Producer " + this.id + " produced: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
             
             try {
+                Buffer.print("Producer " + this.id + " produced: " + product + "\tBuffer size: " + this.buffer.getSize() + "\n");
                 Thread.sleep(this.waitTime);
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex);
             }

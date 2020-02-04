@@ -11,29 +11,31 @@ package com.mycompany.proyectofinallp;
  */
 public class Product {
     
-    private String ID,
-                    idProducer,
-                    product;
+    private String idProducer,
+            product;
     
-    public Product(String ID, String idProducer) {
-        this.ID = ID;
+    public Product(String idProducer) {
         this.idProducer = idProducer;
         this.product = "";
     }
    
-    public String getID(){
-        return this.ID;
+    public String getIdProducer(){
+        return this.idProducer;
     }
 
     public String getProduct(){
         return this.product;
     }
     
-    public void setID(String ID){
-        this.ID = ID;
+    public void setIdProducer(String ID){
+        this.idProducer = idProducer;
     }
     
     public void setProduct(String product){
         this.product = product;
+    }
+    
+    public String toString() {
+        return this.idProducer + "\t" + this.product;
     }
 }

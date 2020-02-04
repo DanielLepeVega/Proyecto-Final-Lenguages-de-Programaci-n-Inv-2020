@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class Buffer {
     
-    private LinkedList<String> buffer;
+    private LinkedList<Product> buffer;
     private List<Producer> producers;
     private List<Consumer> consumers;
     
@@ -30,8 +30,8 @@ public class Buffer {
     }
     
     
-    synchronized String consume() {
-        String product = "";
+    synchronized Product consume() {
+        Product product;
         
         
 //        System.out.println("Consuming in bufffer: " + this);
@@ -52,7 +52,7 @@ public class Buffer {
         return product;
     }
     
-    synchronized void produce(String product) {
+    synchronized void produce(Product product) {
         while(this.buffer.size() == this.n) {
             try {
 //                System.out.println("Buffer is full, waiting for consumers...");
@@ -63,6 +63,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " produced " + product);
         this.buffer.add(product);
+        
 //        System.out.println("Buffer size: " + this.buffer.size() + "\n");
         
         notify();
