@@ -212,10 +212,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Productor", "Operación Scheme"
@@ -244,10 +241,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jTable2.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Consumidor", "Scheme", "Productor Ref", "Resultado"
