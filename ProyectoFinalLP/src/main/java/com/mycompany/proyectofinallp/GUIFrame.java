@@ -37,7 +37,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPaneMain = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -54,7 +54,6 @@ public class GUIFrame extends javax.swing.JFrame {
         jSpinnerBufferSize = new javax.swing.JSpinner();
         jSpinnerWaitTimeProd = new javax.swing.JSpinner();
         jSpinnerWaitTimeCons = new javax.swing.JSpinner();
-        jButtonInicio = new javax.swing.JButton();
         jPanelProcess = new javax.swing.JPanel();
         jScrollPaneToDos = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -64,6 +63,7 @@ public class GUIFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jProgressBarToDo = new javax.swing.JProgressBar();
         jTextFieldDone = new javax.swing.JTextField();
+        jButtonInicio = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -109,15 +109,6 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jSpinnerWaitTimeCons.setModel(new javax.swing.SpinnerNumberModel(1000, 0, 10000, 1));
 
-        jButtonInicio.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        jButtonInicio.setForeground(new java.awt.Color(0, 102, 51));
-        jButtonInicio.setText("INICIAR");
-        jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicioActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -146,11 +137,8 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(jSpinnerWaitTimeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jLabelError))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(jLabelError)))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,9 +170,7 @@ public class GUIFrame extends javax.swing.JFrame {
                             .addComponent(jSpinnerLowerR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelError)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -201,10 +187,10 @@ public class GUIFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Configuración", jPanel2);
+        jTabbedPaneMain.addTab("Configuración", jPanel2);
 
         jPanelProcess.setPreferredSize(new java.awt.Dimension(431, 238));
 
@@ -276,26 +262,45 @@ public class GUIFrame extends javax.swing.JFrame {
                 .addGroup(jPanelProcessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jProgressBarToDo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldDone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Procesos", jPanelProcess);
+        jTabbedPaneMain.addTab("Procesos", jPanelProcess);
+
+        jButtonInicio.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
+        jButtonInicio.setForeground(new java.awt.Color(0, 102, 51));
+        jButtonInicio.setText("INICIAR");
+        jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInicioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(43, 43, 43)
+                    .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(43, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addGap(0, 0, 0))
+                .addComponent(jTabbedPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(305, 305, 305)
+                    .addComponent(jButtonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(29, Short.MAX_VALUE)))
         );
 
         pack();
@@ -341,10 +346,12 @@ public class GUIFrame extends javax.swing.JFrame {
             
             this.threadManager.startProducerConsumer();
             this.changeJButtonInicio("DETENER", Color.red);
+            this.jTabbedPaneMain.setSelectedIndex(1);
 
         } else {
             this.threadManager.stopProducerConsumer();
             this.changeJButtonInicio("INICIAR", new Color(0, 102, 51));
+            this.jTabbedPaneMain.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
@@ -461,7 +468,7 @@ public class GUIFrame extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerUpperR;
     private javax.swing.JSpinner jSpinnerWaitTimeCons;
     private javax.swing.JSpinner jSpinnerWaitTimeProd;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPaneMain;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextFieldDone;

@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public class Consumer extends Thread {
     
     public int id;
-    private int waitTime;
+    private final int waitTime;
     Buffer buffer;
     
     private boolean halt;

@@ -7,13 +7,12 @@ import java.util.logging.Logger;
 
 public class Producer extends Thread {
     
-    private int id;
-    private int waitTime;
-    private int lowerRange, upperRange;
-    private Buffer buffer;
-    
-    private String product;
-    
+    public int id;
+    private final int waitTime,
+            lowerRange,
+            upperRange;
+    Buffer buffer;
+        
     private boolean halt;
     
     
@@ -30,11 +29,7 @@ public class Producer extends Thread {
     private String produceId(int numberOfExp) {
         return Thread.currentThread().getName() + " " + Integer.toString(numberOfExp++);
     }
-    
-    public synchronized String getProduct() {
-        return this.product;
-    }
-    
+
     public void halt() {
         this.halt = true;
     }
