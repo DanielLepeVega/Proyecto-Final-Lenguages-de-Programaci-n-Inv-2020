@@ -11,14 +11,16 @@ package com.mycompany.proyectofinallp;
  */
 public class Product {
     
-    private String ID, 
+    private String ID,
+                    idProducer,
                     product;
     
-    public Product(String ID, String product){
+    public Product(String ID, String idProducer) {
         this.ID = ID;
-        this.product = product;
+        this.idProducer = idProducer;
+        this.product = "";
     }
-    
+   
     public String getID(){
         return this.ID;
     }
