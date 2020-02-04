@@ -19,6 +19,8 @@ public class ProducerConsumer {
     
     private Buffer buffer;
     
+    private Updater updater;
+    
     public ProducerConsumer(Integer bufferSize, Integer numProducers, Integer numConsumers,
             Integer waitTimeProducer, Integer waitTimeConsumer, Integer lowerRange, int upperRange) {
         this.bufferSize = bufferSize;
@@ -27,13 +29,16 @@ public class ProducerConsumer {
         this.waitTimeProducer = waitTimeProducer;
         this.waitTimeConsumer = waitTimeConsumer;
         this.lowerRange = lowerRange;
-        this.upperRange = upperRange;  
-        
+        this.upperRange = upperRange;
         
     }
     
     public Buffer getBuffer() {
         return this.buffer;
+    }
+    
+    public void setUpdater(Updater updater){
+        this.updater = updater;
     }
     
     public void startProducerConsumer() {
@@ -42,7 +47,7 @@ public class ProducerConsumer {
         inProgress = true;
         
         // Start buffer
-        this.buffer = new Buffer(this.bufferSize);
+        this.buffer = new Buffer(this.bufferSize, this.updater);
         
         // Initialize producer and consumer list
         this.producerList = new ArrayList<>();

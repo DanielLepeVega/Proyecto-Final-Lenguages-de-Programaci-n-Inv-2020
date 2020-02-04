@@ -13,16 +13,18 @@ public class Buffer {
     private LinkedList<Product> buffer;
     private List<Producer> producers;
     private List<Consumer> consumers;
-    
+    private Updater updater;
     
     private int n;
     
-    Buffer(int n) {
+    public Buffer(int n, Updater updater) {
         this.buffer = new LinkedList<>();
         this.n = n;
         
         this.producers = new LinkedList<>();
         this.consumers = new LinkedList<>();
+     
+        this.updater = updater;
     }
     
     public int getSize() {
@@ -45,6 +47,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " trying to consume product");
         product = this.buffer.remove();
+        this.updater.updateConsumer("1"/*consumer.getIdConsumer*/, product.getProduct(), product.getIdProducer(), "0", this.buffer.size());
 //        System.out.println(Thread.currentThread().getName() + " consumed " + product);
 //        System.out.println("Buffer size after consumption: " + this.buffer.size() + "\n");
 
@@ -63,6 +66,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " produced " + product);
         this.buffer.add(product);
+        this.updater.updateProducer(product.getIdProducer(), product.getProduct(), this.buffer.size());
         
 //        System.out.println("Buffer size: " + this.buffer.size() + "\n");
         

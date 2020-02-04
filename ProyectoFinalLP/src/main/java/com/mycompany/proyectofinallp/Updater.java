@@ -6,7 +6,7 @@
 package com.mycompany.proyectofinallp;
 
 import javax.swing.*;
-
+import javax.swing.table.*;
 /**
  *
  * @author yo_da
@@ -20,19 +20,27 @@ public class Updater {
     
     private JTextField textFieldTasksDone;
     
+    private DefaultTableModel modelToDos,
+                                modelDone;
+    
+    private int counter;
+    
     public Updater(JTable tableToDos, JTable tableDone, JProgressBar progressBarToDo, JTextField textFieldTasksDone){
         this.tableToDos = tableToDos;
         this.tableDone = tableDone;
         this.progressBarToDo = progressBarToDo;
         this.textFieldTasksDone = textFieldTasksDone;
+        this.modelToDos = (DefaultTableModel)this.tableToDos.getModel();
+        this.modelDone = (DefaultTableModel)this.tableDone.getModel();
+        this.counter = 0;
     }
     
     public void updateTableToDos(String idProductor, String product){
-        //this.tableToDos.add();
+         this.modelToDos.addRow(new String [] {idProductor, product});
     }
     
-    public void updateTableDone(){
-        
+    public void updateTableDone(String idConsumidor, String operacion, String idProductor, String resultado){
+        this.modelDone.addRow(new String[] {idConsumidor, operacion, idProductor, resultado});
     }
     
     public void updateProgressBarToDo(int bufferSize){
@@ -40,7 +48,7 @@ public class Updater {
     }
     
     public void updateTextFieldTasksDone(){
-        
+        this.counter++;
     }
     
     public void updateProducer(String idProductor, String product, int bufferSize){
@@ -48,11 +56,9 @@ public class Updater {
         this.updateProgressBarToDo(bufferSize);
     }
                 
-    public void updateConsumer(){
-        
-    }
-    
-    public void updateGUI(){
-        
+    public void updateConsumer(String idConsumidor, String operacion, String idProductor, String resultado, int bufferSize){
+        this.updateTableDone(idConsumidor, operacion, idProductor, resultado);
+        this.updateProgressBarToDo(bufferSize);
+        this.updateTextFieldTasksDone();
     }
 }

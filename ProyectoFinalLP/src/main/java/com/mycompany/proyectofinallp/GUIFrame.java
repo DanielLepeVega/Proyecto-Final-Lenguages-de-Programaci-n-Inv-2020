@@ -1,7 +1,7 @@
 package com.mycompany.proyectofinallp;
 
 import java.awt.Color;
-import javax.swing.table.TableColumnModel;
+import javax.swing.table.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +17,7 @@ public class GUIFrame extends javax.swing.JFrame {
 
     private boolean flagToStartThreads; 
     private ProducerConsumer threadManager;
+    private Updater updater;
     
     /**
      * Creates new form GUIFrame
@@ -35,6 +36,8 @@ public class GUIFrame extends javax.swing.JFrame {
         TableColumnModel columnModel1 = this.jTable1.getColumnModel();
         columnModel1.getColumn(0).setPreferredWidth(20);
         columnModel1.getColumn(1).setPreferredWidth(100);
+       
+        this.updater = new Updater(jTable1, jTable1, jProgressBarToDo, jTextFieldDone);
     }
 
     /**
@@ -397,6 +400,8 @@ public class GUIFrame extends javax.swing.JFrame {
                 inputLowRange,
                 inputUpRange
             );
+            
+            this.threadManager.setUpdater(this.updater);
             
             this.threadManager.startProducerConsumer();
             this.changeJButtonInicio("DETENER", Color.red);
