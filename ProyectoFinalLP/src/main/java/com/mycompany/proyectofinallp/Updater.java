@@ -65,5 +65,8 @@ public class Updater {
         this.updateTableDone(idConsumidor, operacion, idProductor, resultado);
         this.updateProgressBarToDo(bufferSize, maxSize);
         this.updateTextFieldTasksDone();
+        
+        this.tableToDos.setRowSelectionInterval(0, 0);
+        this.modelToDos.removeRow(this.tableToDos.getSelectedRow());
     }
 }
