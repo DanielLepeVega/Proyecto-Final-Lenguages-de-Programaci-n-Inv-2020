@@ -11,8 +11,6 @@ import java.util.logging.Logger;
 public class Buffer {
     
     private LinkedList<Product> buffer;
-    private List<Producer> producers;
-    private List<Consumer> consumers;
     private Updater updater;
     
     private int n;
@@ -20,9 +18,6 @@ public class Buffer {
     public Buffer(int n, Updater updater) {
         this.buffer = new LinkedList<>();
         this.n = n;
-        
-        this.producers = new LinkedList<>();
-        this.consumers = new LinkedList<>();
      
         this.updater = updater;
     }
@@ -32,7 +27,7 @@ public class Buffer {
     }
     
     
-    synchronized Product consume() {
+    synchronized Product consume(String consumerId) {
         Product product;
         
         
@@ -47,7 +42,7 @@ public class Buffer {
         }
 //        System.out.println(Thread.currentThread().getName() + " trying to consume product");
         product = this.buffer.remove();
-        this.updater.updateConsumer("1"/*consumer.getIdConsumer*/, product.getProduct(), product.getIdProducer(), "0", this.buffer.size(), this.n);
+        this.updater.updateConsumer(consumerId, product.getProduct(), product.getIdProducer(), "0", this.buffer.size(), this.n);
 //        System.out.println(Thread.currentThread().getName() + " consumed " + product);
 //        System.out.println("Buffer size after consumption: " + this.buffer.size() + "\n");
 
