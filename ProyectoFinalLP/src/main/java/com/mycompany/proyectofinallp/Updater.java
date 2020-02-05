@@ -33,6 +33,9 @@ public class Updater {
         this.modelToDos = (DefaultTableModel)this.tableToDos.getModel();
         this.modelDone = (DefaultTableModel)this.tableDone.getModel();
         this.counter = 0;
+        
+        this.modelToDos.setRowCount(0);
+        this.modelDone.setRowCount(0);
     }
     
     public void updateTableToDos(String idProductor, String product){
