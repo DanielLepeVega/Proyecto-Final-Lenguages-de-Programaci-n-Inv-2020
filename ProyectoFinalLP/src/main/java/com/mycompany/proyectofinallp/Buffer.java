@@ -44,9 +44,7 @@ public class Buffer {
         product = this.buffer.remove();
 
         System.err.println("Resultado: " + EvalResult.evaluate(product.getProduct()));
-        this.updater.updateConsumer("1"/*consumer.getIdConsumer*/, product.getProduct(), product.getIdProducer(), "" + EvalResult.evaluate(product.getProduct()), this.buffer.size(), this.n);
-
-        this.updater.updateConsumer(consumerId, product.getProduct(), product.getIdProducer(), "0", this.buffer.size(), this.n);
+        this.updater.updateConsumer(consumerId, product.getProduct(), product.getIdProducer(), "" + EvalResult.evaluate(product.getProduct()), this.buffer.size(), this.n);
 
 //        System.out.println(Thread.currentThread().getName() + " consumed " + product);
 //        System.out.println("Buffer size after consumption: " + this.buffer.size() + "\n");
