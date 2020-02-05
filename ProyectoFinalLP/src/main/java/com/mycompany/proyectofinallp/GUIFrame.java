@@ -378,6 +378,8 @@ public class GUIFrame extends javax.swing.JFrame {
         int inputLowRange = (Integer) this.jSpinnerLowerR.getValue();
         int inputUpRange = (Integer) this.jSpinnerUpperR.getValue();
         
+        this.jLabelError.setVisible(false);
+
         // display errors if any
         this.displayErrors(this.getErrors(inputProducers, inputWaitTimeProd, 
                 inputConsumers, inputWaitTimeCons, inputBufferSize, inputLowRange, 
@@ -396,7 +398,6 @@ public class GUIFrame extends javax.swing.JFrame {
             
             this.updater = new Updater(jTable1, jTable2, jProgressBarToDo, jTextFieldDone);
             this.threadManager.setUpdater(this.updater);
-            
             this.threadManager.startProducerConsumer();
             this.changeJButtonInicio("DETENER", Color.red);
             this.jTabbedPaneMain.setSelectedIndex(1);
