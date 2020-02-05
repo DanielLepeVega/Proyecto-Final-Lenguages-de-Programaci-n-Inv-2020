@@ -30,7 +30,7 @@ public class Consumer extends Thread {
         Product product;
         
         while(!this.halt) {
-            product = this.buffer.consume();
+            product = this.buffer.consume(Integer.toString(this.id));
 
             
             try {

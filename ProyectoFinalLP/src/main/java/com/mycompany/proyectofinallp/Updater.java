@@ -22,7 +22,7 @@ public class Updater {
     
     private DefaultTableModel modelToDos,
                                 modelDone;
-    
+        
     private int counter;
     
     public Updater(JTable tableToDos, JTable tableDone, JProgressBar progressBarToDo, JTextField textFieldTasksDone){
