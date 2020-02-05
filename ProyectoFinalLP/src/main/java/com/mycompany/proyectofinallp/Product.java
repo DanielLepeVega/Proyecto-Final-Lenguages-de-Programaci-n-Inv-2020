@@ -36,6 +36,6 @@ public class Product {
     }
     
     public String toString() {
-        return this.idProducer + "\t" + this.product;
+        return this.product;
     }
 }
