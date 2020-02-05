@@ -2,7 +2,6 @@
 package com.mycompany.proyectofinallp;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,24 +30,24 @@ public class Buffer {
         Product product;
         
         
-//        System.out.println("Consuming in bufffer: " + this);
         while(this.buffer.isEmpty()) {
             try {
-//                System.out.println(Thread.currentThread().getName() +" Waiting to consume...\n");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-//        System.out.println(Thread.currentThread().getName() + " trying to consume product");
         product = this.buffer.remove();
+        
+        String result;
 
-        System.err.println("Resultado: " + EvalResult.evaluate(product.getProduct()));
-        this.updater.updateConsumer(consumerId, product.getProduct(), product.getIdProducer(), "" + EvalResult.evaluate(product.getProduct()), this.buffer.size(), this.n);
-
-//        System.out.println(Thread.currentThread().getName() + " consumed " + product);
-//        System.out.println("Buffer size after consumption: " + this.buffer.size() + "\n");
-
+        try {
+            result = "" + EvalResult.evaluate(product.getProduct());
+        } catch (ArithmeticException e) {
+            result = "Indeterminado";
+        }
+        
+        this.updater.updateConsumer(consumerId, product.getProduct(), product.getIdProducer(), result, this.buffer.size(), this.n);
         notify();
         return product;
     }
@@ -56,17 +55,14 @@ public class Buffer {
     synchronized void produce(Product product) {
         while(this.buffer.size() == this.n) {
             try {
-//                System.out.println("Buffer is full, waiting for consumers...");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-//        System.out.println(Thread.currentThread().getName() + " produced " + product);
         this.buffer.add(product);
         this.updater.updateProducer(product.getIdProducer(), product.getProduct(), this.buffer.size(), this.n);
         
-//        System.out.println("Buffer size: " + this.buffer.size() + "\n");
         
         notify();
     }

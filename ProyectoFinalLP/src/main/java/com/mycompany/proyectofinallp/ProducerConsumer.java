@@ -84,17 +84,4 @@ public class ProducerConsumer {
         
         System.out.println("All producers and consumers stopped.");
     }
-        
-    
-    
-//    public static void main(String[] args) {
-//        
-//        Buffer buffer = new Buffer(10);
-//        
-//        Producer producer = new Producer(buffer);
-//        producer.start();
-//        
-//        Consumer consumer = new Consumer(buffer);
-//        consumer.start();
-//    } 
 }

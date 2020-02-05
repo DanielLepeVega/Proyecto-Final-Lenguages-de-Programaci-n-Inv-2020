@@ -95,7 +95,7 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel6.setText("Rango de Valores (n, m)");
 
-        jSpinnerUpperR.setModel(new javax.swing.SpinnerNumberModel(2, 2, 9, 1));
+        jSpinnerUpperR.setModel(new javax.swing.SpinnerNumberModel(2, 0, 9, 1));
 
         jLabel1.setText("Productores");
 
@@ -110,7 +110,7 @@ public class GUIFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Cantidad");
 
-        jSpinnerLowerR.setModel(new javax.swing.SpinnerNumberModel(1, 1, 8, 1));
+        jSpinnerLowerR.setModel(new javax.swing.SpinnerNumberModel(1, 0, 9, 1));
 
         jSpinnerBufferSize.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
 
